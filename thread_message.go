@@ -46,7 +46,7 @@ type ThreadMessagesResponse struct {
 
 // CreateThreadMessage creates a new thread message
 func (c *Client) CreateThreadMessage(ctx context.Context, threadID string, request ThreadMessageRequest) (response ThreadMessageResponse, err error) {
-	urlSuffix := fmt.Sprint("%s/%s/messages", threadsSuffix, threadID)
+	urlSuffix := fmt.Sprintf("%s/%s/messages", threadsSuffix, threadID)
 	req, err := c.newRequest(ctx, http.MethodPost, c.fullURL(urlSuffix), withBody(request),
 		withBetaAssistantV1())
 	if err != nil {
@@ -59,7 +59,7 @@ func (c *Client) CreateThreadMessage(ctx context.Context, threadID string, reque
 
 // CreateThreadMessage creates a new thread message
 func (c *Client) ListThreadMessage(ctx context.Context, threadID string) (response ThreadMessagesResponse, err error) {
-	urlSuffix := fmt.Sprint("%s/%s/messages", threadsSuffix, threadID)
+	urlSuffix := fmt.Sprintf("%s/%s/messages", threadsSuffix, threadID)
 	req, err := c.newRequest(ctx, http.MethodGet, c.fullURL(urlSuffix), withBetaAssistantV1())
 	if err != nil {
 		return
